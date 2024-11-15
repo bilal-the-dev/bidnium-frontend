@@ -1,4 +1,3 @@
-import AppLayout from '@/layout/AppLayout.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
@@ -6,109 +5,31 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            component: AppLayout,
             meta: { requiresAuth: true },
             children: [
                 {
-                    path: '/dashboard/:id',
-                    name: 'dashboard',
-                    component: () => import('@/views/Dashboard.vue')
+                    path: '/',
+                    name: 'home',
+                    component: () => import('@/views/Home.vue')
                 },
                 {
-                    path: '/profile/:id',
-                    name: 'profile',
-                    component: () => import('@/views/pages/Profile.vue')
+                    path: '/about',
+                    name: 'about',
+                    component: () => import('@/views/About.vue')
                 },
                 {
-                    path: '/plans/:id',
-                    name: 'plans',
-                    component: () => import('@/views/pages/Plans.vue')
+                    path: '/contact',
+                    name: 'contact',
+                    component: () => import('@/views/Contact.vue')
                 },
                 {
-                    path: '/settings/:id',
-                    name: 'settings',
-                    component: () => import('@/views/pages/Settings.vue')
-                },
-                {
-                    path: '/tickets/panels/:id',
-                    name: 'panels',
-                    component: () => import('@/views/pages/tickets/Panels.vue')
-                },
-                {
-                    path: '/tickets/panels/create/:id',
-                    name: 'panelsCreate',
-                    component: () => import('@/views/pages/tickets/PanelsCreate.vue')
-                },
-                {
-                    path: '/tickets/panels/edit/:panelId/:id',
-                    name: 'panelsEdit',
-                    component: () => import('@/views/pages/tickets/PanelsEdit.vue')
-                },
-                {
-                    path: '/tickets/logs/:id',
-                    name: 'TicketLogs',
-                    component: () => import('@/views/pages/tickets/TicketLogs.vue')
-                },
-                {
-                    path: '/autoresponders/:id',
-                    name: 'autoResponders',
-                    component: () => import('@/views/pages/AutoResponser.vue')
-                },
-                {
-                    path: '/autoresponders/create/:id',
-                    name: 'autoRespondersCreate',
-                    component: () => import('@/views/pages/AutoResponserCreate.vue')
-                },
-                {
-                    path: '/autoresponders/edit/:responserId/:id',
-                    name: 'autoRespondersEdit',
-                    component: () => import('@/views/pages/AutoResponserEdit.vue')
+                    path: '/pricing',
+                    name: 'pricing',
+                    component: () => import('@/views/Pricing.vue')
                 }
             ]
-        },
-        {
-            path: '/auth',
-            meta: { guest: true },
-            children: [
-                {
-                    path: '/auth',
-                    name: 'auth',
-                    component: () => import('@/views/pages/auth/auth.vue')
-                },
-                {
-                    path: '/login',
-                    name: 'login',
-                    component: () => import('@/views/pages/auth/login.vue')
-                }
-            ]
-        },
-        {
-            path: '/servers',
-            name: 'servers',
-            component: () => import('@/views/pages/Server.vue'),
-            meta: { requiresAuth: true }
         }
     ]
 });
 
-router.beforeEach((to, from, next) => {
-    const userId = localStorage.getItem('userId');
-    const isAuthenticated = !!userId;
-
-    if (to.matched.some((record) => record.meta.requiresAuth)) {
-        if (!isAuthenticated) {
-            next({ name: 'login' });
-        } else {
-            next();
-        }
-    } else if (to.matched.some((record) => record.meta.guest)) {
-        if (isAuthenticated) {
-            next({ name: 'servers' });
-        } else {
-            next();
-        }
-    } else {
-        next();
-    }
-});
 export default router;

@@ -6,23 +6,23 @@ import AppMenuItem from './AppMenuItem.vue';
 const id = localStorage.getItem('guildid');
 console.log(id);
 const allMenuItems = [
-    {
-        label: 'Tickety',
-        items: [
-            { label: 'Overview', icon: 'pi pi-fw pi-eye', to: `/dashboard/${id}` },
-            { label: 'Server', icon: 'pi pi-fw pi-database', to: '/servers' },
-            { label: 'Plans', icon: 'pi pi-fw pi-credit-card', to: `/plans/${id}` },
-            { label: 'Settings', icon: 'pi pi-fw pi-spin pi-cog', to: `/settings/${id}` },
-            { label: 'AutoResponder', icon: 'pi pi-fw pi-comment', to: `/autoresponders/${id}` }
-        ]
-    },
-    {
-        label: 'Tickets',
-        items: [
-            { label: 'Ticket Panel', icon: 'pi pi-fw pi-ticket', to: `/tickets/panels/${id}` },
-            { label: 'Ticket Logs', icon: 'pi pi-fw pi-file', to: `/tickets/logs/${id}` }
-        ]
-    }
+    // {
+    //     label: 'Tickety',
+    //     items: [
+    //         { label: 'Overview', icon: 'pi pi-fw pi-eye', to: `/dashboard/${id}` },
+    //         { label: 'Server', icon: 'pi pi-fw pi-database', to: '/servers' },
+    //         { label: 'Plans', icon: 'pi pi-fw pi-credit-card', to: `/plans/${id}` },
+    //         { label: 'Settings', icon: 'pi pi-fw pi-spin pi-cog', to: `/settings/${id}` },
+    //         { label: 'AutoResponder', icon: 'pi pi-fw pi-comment', to: `/autoresponders/${id}` }
+    //     ]
+    // },
+    // {
+    //     label: 'Tickets',
+    //     items: [
+    //         { label: 'Ticket Panel', icon: 'pi pi-fw pi-ticket', to: `/tickets/panels/${id}` },
+    //         { label: 'Ticket Logs', icon: 'pi pi-fw pi-file', to: `/tickets/logs/${id}` }
+    //     ]
+    // }
 ];
 const selectedItems = ref('');
 
